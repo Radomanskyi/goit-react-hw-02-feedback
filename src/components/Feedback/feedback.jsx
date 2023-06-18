@@ -5,6 +5,7 @@ import FeedbackOptions from '../FeedbackOptions/FeedbackOptions'
 import Section from 'components/SectionTitle/SectionTitle'
 import Notification from '../Notification/Notification'
 import StatisticsTitle from '../Statistics/StatisticsTitle'
+import PropTypes from "prop-types";
 
 class Feedback extends Component{
     state = {
@@ -42,11 +43,15 @@ class Feedback extends Component{
                 title="Please leave feedback"
                 children={<><FeedbackOptions onLeaveNeutralFeedback={this.handleClickNeutral} onLeaveGoodFeedback={this.handleClickGood} onLeaveBadFeedback={this.handleClickBad}></FeedbackOptions><Statistics good={good} neutral={neutral} bad={bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()} /></>}>
         </Section>)}
-        
         </div>
         )
     }
-    
 }
+
+Feedback.propTypes = {
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad:PropTypes.number
+  };
 
 export default Feedback
